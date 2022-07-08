@@ -4,6 +4,5 @@ bucket = s3.Bucket('nyse.taq.prod.rawfiles')
 
 def load(path):
     for obj in bucket.objects.filter(Prefix=path):
-        print(obj.key)
-       
+        bucket.download_file(obj.key, obj.key.split('/')[-1])
     return None

@@ -12,6 +12,8 @@ def hello():
 # get the json data
 @app.route('/get_data', methods = ['POST'])
 def get_sentiment():
+	file_url = request.form['file_url']
+	file_stream = request.get(file_url, stream=True)
 	tx = request.get_json(force = True)
 	text = tx['Review']
 	result = load(text)
